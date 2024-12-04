@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csx1rk3gen27j"]
+
+[ext_resource type="Script" path="res://scenes/component/gem_generator_components/gem_generator_component.gd" id="1_0s1uw"]
+
+[node name="GemGeneratorComponent" type="Node"]
+script = ExtResource("1_0s1uw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

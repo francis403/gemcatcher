@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfngbkovsbvy0"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_bhbxs"]
+[ext_resource type="Texture2D" uid="uid://ce1g544l64o2s" path="res://scenes/main/GameBg.png" id="1_mqg8m"]
+[ext_resource type="PackedScene" uid="uid://csx1rk3gen27j" path="res://scenes/component/gem_generator_components/gem_generator_component.tscn" id="2_1tcfr"]
+[ext_resource type="AudioStream" uid="uid://bpqfsrjskdwsx" path="res://scenes/main/background.mp3" id="2_8xeh7"]
+[ext_resource type="PackedScene" uid="uid://8hocuvpn1k8k" path="res://scenes/game_objects/paddle/paddle.tscn" id="2_or0kg"]
+[ext_resource type="PackedScene" uid="uid://b8ew0l13tdq5u" path="res://scenes/game_objects/gem/gem.tscn" id="5_rd6mm"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_bhbxs")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8xeh7")
+volume_db = -6.0
+autoplay = true
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_mqg8m")
+
+[node name="GemLayer" type="Node2D" parent="." groups=["gem_layer"]]
+position = Vector2(1, -350)
+
+[node name="GemGeneratorComponent" parent="." instance=ExtResource("2_1tcfr")]
+gem_scene = ExtResource("5_rd6mm")
+
+[node name="PointCounter" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -594.0
+offset_top = -325.0
+offset_right = -584.0
+offset_bottom = -302.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+size_flags_vertical = 1
+text = "0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="." groups=["entity_layer"]]
+
+[node name="Paddle" parent="Entities" instance=ExtResource("2_or0kg")]
+unique_name_in_owner = true
+position = Vector2(-2, 251)

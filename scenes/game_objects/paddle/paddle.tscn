@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://8hocuvpn1k8k"]
+
+[ext_resource type="Script" path="res://scenes/game_objects/paddle/paddle.gd" id="1_bw846"]
+[ext_resource type="Texture2D" uid="uid://dpx6fmqrho4v1" path="res://scenes/game_objects/paddle/paddleBlu.png" id="1_n0f0g"]
+[ext_resource type="AudioStream" uid="uid://cfhaqhjvk723j" path="res://scenes/game_objects/paddle/spell1_0.wav" id="2_nrpen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b461p"]
+size = Vector2(105, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqs7k"]
+size = Vector2(104, 24)
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_bw846")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nrpen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0f0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b461p")
+
+[node name="StarCollectorArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarCollectorArea"]
+shape = SubResource("RectangleShape2D_lqs7k")
